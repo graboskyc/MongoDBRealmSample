@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Realms;
 using Realms.Sync;
-using Acr.UserDialogs;
 using Credentials = Realms.Sync.Credentials;
 
 namespace RealmTester
@@ -24,12 +23,11 @@ namespace RealmTester
         {
             InitializeComponent();
             await Task.Yield();
-            UserDialogs.Instance.ShowLoading("Logging in...");
+
             _realm = await OpenRealm();
             var Entries = _realm.All<Beer>();
             var EList = Entries.ToList();
             lbl_status.Text = "";
-            UserDialogs.Instance.HideLoading();
             foreach (var b in EList)
             {
                 lbl_status.Text = lbl_status.Text + " " + b.Name;
@@ -78,7 +76,8 @@ namespace RealmTester
 
                 // First time the user logs in, let's use GetInstanceAsync so we fully download the Realm
                 // before letting them interract with the UI.
-                var realm = await Realm.GetInstanceAsync(configuration);
+                var realm = Realm.GetInstance(configuration);
+                //var realm = await Realm.GetInstanceAsync(configuration);
 
                 //UserDialogs.Instance.HideLoading();
 
