@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{6E384467-0CE3-4E28-AC00-BD9F6596A39E}|Default">
   <MonoDevelop.Ide.ItemProperties.RealmTester.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RealmTester/Constants.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RealmTester/MainPage.xaml">
     <Files>
       <File FileName="RealmTester/GskyRealmModels.cs" Line="8" Column="19" />
-      <File FileName="RealmTester/MainPage.xaml.cs" Line="28" Column="39" />
-      <File FileName="RealmTester/Constants.cs" Line="5" Column="25" />
+      <File FileName="RealmTester/MainPage.xaml.cs" Line="30" Column="1" />
+      <File FileName="RealmTester/Constants.cs" Line="7" Column="46" />
+      <File FileName="RealmTester/MainPage.xaml" Line="7" Column="60" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -24,16 +25,10 @@
     <BreakpointStore>
       <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="28" column="1" />
       <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="29" column="42" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="71" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="75" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="80" column="1" />
       <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="27" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="40" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="67" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="62" column="1" />
       <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="26" column="1" />
       <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="30" column="1" />
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="35" column="1" />
+      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="32" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

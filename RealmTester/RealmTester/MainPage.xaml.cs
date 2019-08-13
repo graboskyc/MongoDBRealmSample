@@ -24,62 +24,23 @@ namespace RealmTester
             InitializeComponent();
             await Task.Yield();
 
+            lbl_status.Text = "Loading...";
             _realm = await OpenRealm();
-            var Entries = _realm.All<Beer>();
+            var Entries = _realm.All<Beer>().OrderBy(b => b.Name);
             var EList = Entries.ToList();
-            lbl_status.Text = "";
-            foreach (var b in EList)
-            {
-                lbl_status.Text = lbl_status.Text + " " + b.Name;
-            }
+
             lbl_status.Text = lbl_status.Text + " All Done!";
         }
 
         private async Task<Realm> OpenRealm()
         {
-            User user;
-            //var user = User.Current;
-            //if (user != null)
-            //{
-            //    var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath, UriKind.Relative), user);
-
-                // User has already logged in, so we can just load the existing data in the Realm.
-            //   return Realm.GetInstance(configuration);
-           //}
-
-            // When that is called in the page constructor, we need to allow the UI operation
-            // to complete before we can display a dialog prompt.
-            //await Task.Yield();
-
-            // var response = await UserDialogs.Instance.PromptAsync(new PromptConfig
-            //{
-            //    Title = "Login",
-            //     Message = "Please enter your nickname",
-            //    OkText = "Login",
-            //     IsCancellable = true,
-            //});
-
-           var credentials = Credentials.Anonymous();
-            //var credentials = Credentials.Nickname("yomamma");
-
-
+            var credentials = Credentials.Anonymous();
 
             try
             {
-                //UserDialogs.Instance.ShowLoading("Logging in...");
-
-                user = await User.LoginAsync(credentials, new Uri(Constants.AuthUrl));
-
-                //UserDialogs.Instance.ShowLoading("Loading data");
-
+                User user = await User.LoginAsync(credentials, new Uri(Constants.AuthUrl));
                 var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath, UriKind.Relative), user);
-
-                // First time the user logs in, let's use GetInstanceAsync so we fully download the Realm
-                // before letting them interract with the UI.
                 var realm = Realm.GetInstance(configuration);
-                //var realm = await Realm.GetInstanceAsync(configuration);
-
-                //UserDialogs.Instance.HideLoading();
 
                 return realm;
             }
