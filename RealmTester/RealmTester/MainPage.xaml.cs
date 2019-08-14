@@ -12,6 +12,7 @@ namespace RealmTester
 {
     public partial class MainPage : ContentPage
     {
+        Credentials _credentials = null;
 
         public MainPage()
         {
@@ -24,7 +25,15 @@ namespace RealmTester
             await Task.Yield();
 
             lbl_status.Text = "Ready...";
+            stk_login.IsVisible = true;
+            stk_form.IsVisible = false;
+        }
 
+        void btnLogin_Clicked(object sender, System.EventArgs e)
+        {
+            _credentials = Credentials.UsernamePassword(txt_un.Text, txt_pw.Text, false);
+            stk_login.IsVisible = false;
+            stk_form.IsVisible = true;
         }
 
         async void btnInsert_Clicked(object sender, System.EventArgs e)
@@ -36,9 +45,9 @@ namespace RealmTester
                 {
                     locRealmInst.Add(new Beer
                     {
-                        Name = "Test Beer",
-                        Brewery = "Your Mom",
-                        Style = "Tasty"
+                        Name = txt_name.Text,
+                        Brewery = txt_brew.Text,
+                        Style = txt_style.Text
                     });
                 });
                 locRealmInst.Refresh();
@@ -64,12 +73,9 @@ namespace RealmTester
 
         private async Task<Realm> OpenRealm()
         {
-            var credentials = Credentials.Anonymous();
-            //var credentials = Credentials.UsernamePassword("testacct", "testpasswd", false);
-
             try
             {
-                User user = await User.LoginAsync(credentials, new Uri(Constants.AuthUrl));
+                User user = await User.LoginAsync(_credentials, new Uri(Constants.AuthUrl));
                 var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath), user);
                 var realm = Realm.GetInstance(configuration);
 

@@ -5,8 +5,27 @@
             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                 <Label Text="Hello Realm World!" XAlign="Center" FontSize="34" />
                 <Label Text="Status Window..." x:Name="lbl_status"/> 
-                <Button Text="Test Insert" x:Name="btn_insert" Clicked="btnInsert_Clicked"></Button>
-                <Button Text="Test Reads" x:Name="btn_reads" Clicked="btnReads_Clicked"></Button>
+                
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" x:Name="stk_login">
+                    <Label Text="Username:" x:Name="lbl_un" />
+                    <Entry x:Name="txt_un" Text="testacct"></Entry>
+                    <Label Text="Password:" x:Name="lbl_pw" />
+                    <Entry x:Name="txt_pw" ></Entry>
+                    <Button Text="Login" x:Name="btn_login" Clicked="btnLogin_Clicked"></Button>
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" x:Name="stk_form">
+                    <Label Text="Beer Name:" />
+                    <Entry x:Name="txt_name" Text="Test Beer" ></Entry>
+                    <Label Text="Brewery Name:" />
+                    <Entry x:Name="txt_brew" Text="Test Brewery" ></Entry>
+                    <Label Text="Style:" />
+                    <Entry x:Name="txt_style" Text="Tasty" ></Entry>
+                    
+                    <Button Text="Test Insert" x:Name="btn_insert" Clicked="btnInsert_Clicked"></Button>
+                    <Button Text="Test Reads" x:Name="btn_reads" Clicked="btnReads_Clicked"></Button>
+                </StackLayout>
+                
             </StackLayout>
         </ScrollView>
     </StackLayout>

@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{6E384467-0CE3-4E28-AC00-BD9F6596A39E}|Default">
   <MonoDevelop.Ide.ItemProperties.RealmTester.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RealmTester/MainPage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RealmTester/MainPage.xaml.cs">
     <Files>
-      <File FileName="RealmTester/MainPage.xaml" Line="9" Column="79" />
-      <File FileName="RealmTester/Constants.cs" Line="8" Column="9" />
+      <File FileName="RealmTester/MainPage.xaml" Line="10" Column="54" />
+      <File FileName="RealmTester/MainPage.xaml.cs" Line="30" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="49" column="46" />
+      <Breakpoint file="/Users/graboskyc/Documents/GitHub/MongoDBRealmSample/RealmTester/RealmTester/MainPage.xaml.cs" relfile="RealmTester/MainPage.xaml.cs" line="54" column="46" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
