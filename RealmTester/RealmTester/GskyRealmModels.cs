@@ -15,5 +15,10 @@ namespace RealmTester
         public string Brewery { get; set; }
         [MapTo("drank")]
         public IList<DateTimeOffset> Drank { get; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} (a {1}) from {2}", Name, Style, Brewery);
+        }
     }
 }

@@ -25,15 +25,44 @@ namespace RealmTester
             await Task.Yield();
 
             lbl_status.Text = "Ready...";
-            stk_login.IsVisible = true;
-            stk_form.IsVisible = false;
+
+            if (App.Current.Properties.ContainsKey("username") && App.Current.Properties.ContainsKey("password"))
+            {
+                stk_login.IsVisible = false;
+                stk_form.IsVisible = true;
+                _credentials = Credentials.UsernamePassword((string)App.Current.Properties["username"], (string)App.Current.Properties["password"], false);
+            }
+            else
+            {
+                stk_login.IsVisible = true;
+                stk_form.IsVisible = false;
+            }
         }
 
         void btnLogin_Clicked(object sender, System.EventArgs e)
         {
             _credentials = Credentials.UsernamePassword(txt_un.Text, txt_pw.Text, false);
+
             stk_login.IsVisible = false;
             stk_form.IsVisible = true;
+
+            if (App.Current.Properties.ContainsKey("username"))
+            {
+                App.Current.Properties["username"] = txt_un.Text;
+            }
+            else
+            {
+                App.Current.Properties.Add("username", txt_un.Text);
+            }
+
+            if (App.Current.Properties.ContainsKey("password"))
+            {
+                App.Current.Properties["password"] = txt_pw.Text;
+            }
+            else
+            {
+                App.Current.Properties.Add("password", txt_pw.Text);
+            }
         }
 
         async void btnInsert_Clicked(object sender, System.EventArgs e)
@@ -65,16 +94,14 @@ namespace RealmTester
             Realm locRealmInst = await OpenRealm();
             var Entries = locRealmInst.All<Beer>().OrderBy(b => b.Name);
             var EList = Entries.ToList();
-            foreach(var b in EList)
-            {
-                lbl_status.Text = lbl_status.Text + b.Name + ", ";
-            }
+            lbl_status.Text = String.Join("\r\n", EList);
         }
 
         private async Task<Realm> OpenRealm()
         {
             try
             {
+                _credentials = Credentials.UsernamePassword((string)App.Current.Properties["username"], (string)App.Current.Properties["password"], false);
                 User user = await User.LoginAsync(_credentials, new Uri(Constants.AuthUrl));
                 var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath), user);
                 var realm = Realm.GetInstance(configuration);
