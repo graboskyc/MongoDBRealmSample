@@ -4,7 +4,10 @@ namespace RealmTester
 {
     public static class Constants
     {
-        public static string AuthUrl = "https://grabosky.us1a.cloud.realm.io";
-        public static string RealmPath = "untappd";
+        private static string InstanceAddress = "grabosky.us1a.cloud.realm.io";
+        private static string Realm = "~/myprivatebeerlist";
+        //private static string Realm = "untappd";
+        public static string AuthUrl = "https://" + InstanceAddress;
+        public static string RealmPath = "realms://" + InstanceAddress + "/" + Realm;
     }
 }

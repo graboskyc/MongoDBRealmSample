@@ -12,7 +12,6 @@ namespace RealmTester
 {
     public partial class MainPage : ContentPage
     {
-        Realm _realm; 
 
         public MainPage()
         {
@@ -24,22 +23,54 @@ namespace RealmTester
             InitializeComponent();
             await Task.Yield();
 
-            lbl_status.Text = "Loading...";
-            _realm = await OpenRealm();
-            var Entries = _realm.All<Beer>().OrderBy(b => b.Name);
-            var EList = Entries.ToList();
+            lbl_status.Text = "Ready...";
 
-            lbl_status.Text = lbl_status.Text + " All Done!";
+        }
+
+        async void btnInsert_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Realm locRealmInst = await OpenRealm();
+                locRealmInst.Write(() =>
+                {
+                    locRealmInst.Add(new Beer
+                    {
+                        Name = "Test Beer",
+                        Brewery = "Your Mom",
+                        Style = "Tasty"
+                    });
+                });
+                locRealmInst.Refresh();
+                lbl_status.Text = "Inserted something";
+            } 
+            catch (Exception ex)
+            {
+                lbl_status.Text = ex.Message;
+            }
+        }
+
+        async void btnReads_Clicked(object sender, System.EventArgs e)
+        {
+            lbl_status.Text = "";
+            Realm locRealmInst = await OpenRealm();
+            var Entries = locRealmInst.All<Beer>().OrderBy(b => b.Name);
+            var EList = Entries.ToList();
+            foreach(var b in EList)
+            {
+                lbl_status.Text = lbl_status.Text + b.Name + ", ";
+            }
         }
 
         private async Task<Realm> OpenRealm()
         {
             var credentials = Credentials.Anonymous();
+            //var credentials = Credentials.UsernamePassword("testacct", "testpasswd", false);
 
             try
             {
                 User user = await User.LoginAsync(credentials, new Uri(Constants.AuthUrl));
-                var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath, UriKind.Relative), user);
+                var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath), user);
                 var realm = Realm.GetInstance(configuration);
 
                 return realm;

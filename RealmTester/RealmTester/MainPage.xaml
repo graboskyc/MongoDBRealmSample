@@ -5,6 +5,8 @@
             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                 <Label Text="Hello Realm World!" XAlign="Center" FontSize="34" />
                 <Label Text="Status Window..." x:Name="lbl_status"/> 
+                <Button Text="Test Insert" x:Name="btn_insert" Clicked="btnInsert_Clicked"></Button>
+                <Button Text="Test Reads" x:Name="btn_reads" Clicked="btnReads_Clicked"></Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>
