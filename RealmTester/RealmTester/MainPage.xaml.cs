@@ -14,6 +14,7 @@ namespace RealmTester
     {
         Credentials _credentials = null;
 
+
         public MainPage()
         {
             Task.Run(async () => { await Initialize(); });
@@ -97,13 +98,21 @@ namespace RealmTester
             lbl_status.Text = String.Join("\r\n", EList);
         }
 
+        async void btnPerm_Clicked(object sender, System.EventArgs e)
+        {
+            Credentials creds = Credentials.UsernamePassword("realmroot","realmroot1234", false);
+            User user = await User.LoginAsync(creds, new Uri(Constants.AuthUrl));
+            var condition = PermissionCondition.Default; 
+            await user.ApplyPermissionsAsync(condition, Constants.RealmPath + "beer", AccessLevel.Read);
+        }
+
         private async Task<Realm> OpenRealm()
         {
             try
             {
                 _credentials = Credentials.UsernamePassword((string)App.Current.Properties["username"], (string)App.Current.Properties["password"], false);
                 User user = await User.LoginAsync(_credentials, new Uri(Constants.AuthUrl));
-                var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath), user);
+                var configuration = new FullSyncConfiguration(new Uri(Constants.RealmPath + ddl_realm.SelectedItem.ToString()), user);
                 var realm = Realm.GetInstance(configuration);
 
                 return realm;

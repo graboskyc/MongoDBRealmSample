@@ -14,7 +14,20 @@
                     <Button Text="Login" x:Name="btn_login" Clicked="btnLogin_Clicked"></Button>
                 </StackLayout>
                 
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" x:Name="stk_realm">
+                    <Label Text="Realm:" />
+                    <Picker x:Name="ddl_realm">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>~/myprivatebeerlist</x:String>
+                                <x:String>beer</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+                
                 <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" x:Name="stk_form">
+                    
                     <Label Text="Beer Name:" />
                     <Entry x:Name="txt_name" Text="Test Beer" ></Entry>
                     <Label Text="Brewery Name:" />
@@ -22,6 +35,7 @@
                     <Label Text="Style:" />
                     <Entry x:Name="txt_style" Text="Tasty" ></Entry>
                     
+                    <Button Text="Grant me them permissions" x:Name="btn_perm" Clicked="btnPerm_Clicked"></Button>
                     <Button Text="Test Insert" x:Name="btn_insert" Clicked="btnInsert_Clicked"></Button>
                     <Button Text="Test Reads" x:Name="btn_reads" Clicked="btnReads_Clicked"></Button>
                 </StackLayout>
